@@ -43,9 +43,10 @@ function Home() {
   }
 
   return (
-    <div className={styles.container}>
-      <div id="confetti" style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }} />
+  <div className={styles.container}>
+    <div id="confetti" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1000, pointerEvents: 'none' }} />
 
+    <div className={styles.glass}>
       {!name && (
         <>
           <h1 className={styles.title}>Bienvenido Entrenador(a)</h1>
@@ -69,14 +70,14 @@ function Home() {
 
       {name && (
         <h2 className={styles.greeting}>
-          Hola de nuevo <span className={styles.username}>{name}</span>, Redireccionando a tu{' '}
+          Hola <span className={styles.username}>{name}</span>, estamos Redireccionando a tu{' '}
           <Link to="/pokedex" className={styles.link}>Pokedex</Link>
         </h2>
       )}
 
       {error && <p className={styles.error}>{error}</p>}
     </div>
-  )
+  </div>
+)
 }
-
 export default Home

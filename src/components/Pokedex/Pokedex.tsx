@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useName } from '../../context/nameContext'
 import axios from 'axios'
 import List from '../List/List'
+import styles from './Pokedex.module.scss'
 
 const defaultType = {
   'ghost': 'Fantasma',
@@ -48,7 +49,7 @@ function Pokedex() {
   const [type, setType] = useState<string>('')
   const [page, setPage] = useState(1)
 
-  const itemsPerPage = 10
+  const itemsPerPage = 12
 
   useEffect(() => {
     axios.get(`${baseUrl}/pokemon?limit=649`)
@@ -99,15 +100,17 @@ function Pokedex() {
   }
 
   return (
-    <div>
+  <div className={styles.container}>
+    <div className={styles.card}>
       <header>
-        <h2>Hola {name}, bienvenido a tu pokedex</h2>
+        <h2>{name}, ya estás en tu Pokedex.</h2>
+        <h3>Desde aquí puedes obtener datos acerca de tus Pokemon favoritos, filtra tu busqueda por tipo:</h3>
       </header>
 
       <form>
         <input
           type="text"
-          placeholder='Search...'
+          placeholder="Search..."
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
@@ -124,13 +127,16 @@ function Pokedex() {
 
       <List pokemons={paginatedItems} />
 
-      {/* Paginación al final */}
-      <div className='pagination'>
+      <div className={styles.pagination}>
         <span>{page} de {totalPages}</span>
         <div>
           <button onClick={() => goToPage(page - 1)} disabled={page === 1}>prev</button>
           {range.map(n => (
-            <button key={n} className={n === page ? 'active' : ''} onClick={() => goToPage(n)}>
+            <button
+              key={n}
+              className={n === page ? 'active' : ''}
+              onClick={() => goToPage(n)}
+            >
               {n}
             </button>
           ))}
@@ -138,7 +144,8 @@ function Pokedex() {
         </div>
       </div>
     </div>
-  )
+  </div>
+)
 }
 
 export default Pokedex

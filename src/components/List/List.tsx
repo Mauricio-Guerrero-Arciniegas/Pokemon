@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Item from '../Item/Item'
+import styles from './List.module.scss'
 
 type Pokemon = {
   name: string
@@ -8,7 +9,7 @@ type Pokemon = {
 
 function List({ pokemons }: { pokemons: Pokemon[] }) {
   return (
-    <div className='content'>
+    <div className={styles.content}>
       {pokemons.length === 0 && <p>No hay nada que mostrar</p>}
 
       {pokemons.map(p => (
