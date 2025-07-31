@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { motion } from 'framer-motion'
 import styles from './Details.module.scss'
 
 type Types = {
@@ -14,7 +15,7 @@ type Types = {
 type Abilities = {
   ability: {
     name: string
-    url: string
+    url: string 
   }
   is_hidden: boolean
   slot: number
@@ -84,56 +85,68 @@ function Details() {
   if (!pokemon) return <p className={styles.loading}>Loading pokemon page...</p>
 
   return (
-    <div className={styles.details}>
-      <header className={styles.header}>
-        <Link to='/pokedex' className={styles.back}>
-          ← Volver
-        </Link>
-      </header>
+    <div className={styles.container}>
+      <motion.div
+        className={styles.card}
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
+        {/* Branding Header */}
+        <div className={styles.branding}>
+          <h1 className={styles.brandTitle}>Pokemon information</h1>
+          <span className={styles.brandTagline}>Discover your favorite Pokémon</span>
+        </div>
 
-      <div className={styles.summary}>
-        <span className={styles.id}>#{pokemon.id.toString().padStart(3, '0')}</span>
-        <h1 className={styles.name}>{pokemon.name}</h1>
-        <img className={styles.image} src={pokemon.image} alt={pokemon.name} />
-      </div>
+        <header className={styles.header}>
+          <Link to='/pokedex' className={styles.back}>
+            ← Volver
+          </Link>
+        </header>
 
-      <div className={styles.section}>
-        <h2>Types</h2>
-        <ul className={styles.list}>
-          {pokemon.types.map((t) => (
-            <li className={styles.type} key={t}>{t}</li>
-          ))}
-        </ul>
-      </div>
+        <div className={styles.summary}>
+          <span className={styles.id}>#{pokemon.id.toString().padStart(3, '0')}</span>
+          <h1 className={styles.name}>{pokemon.name}</h1>
+          <img className={styles.image} src={pokemon.image} alt={pokemon.name} />
+        </div>
 
-      <div className={styles.section}>
-        <h2>Abilities</h2>
-        <ul className={styles.list}>
-          {pokemon.abilities.map((a) => (
-            <li className={styles.ability} key={a}>{a}</li>
-          ))}
-        </ul>
-      </div>
+        <div className={styles.section}>
+          <h2>Types</h2>
+          <ul className={styles.list}>
+            {pokemon.types.map((t) => (
+              <li className={`${styles.type} ${styles[`type--${t}`]}`} key={t}>{t}</li>
+            ))}
+          </ul>
+        </div>
 
-      <div className={styles.section}>
-        <h2>Stats</h2>
-        <ul className={styles.stats}>
-          <li>HP: {pokemon.stats.hp}</li>
-          <li>Attack: {pokemon.stats.attack}</li>
-          <li>Defense: {pokemon.stats.defense}</li>
-          <li>Speed: {pokemon.stats.speed}</li>
-        </ul>
-      </div>
-      
-      <div className={styles.section}>
-        <h2>Moves</h2>
-        <ol className={styles.moves}>
-          {pokemon.moves.map((m) => (
-            <li key={m}>{m}</li>
-          ))}
-        </ol>
-      </div>
+        <div className={styles.section}>
+          <h2>Abilities</h2>
+          <ul className={styles.list}>
+            {pokemon.abilities.map((a) => (
+              <li className={styles.ability} key={a}>{a}</li>
+            ))}
+          </ul>
+        </div>
 
+        <div className={styles.section}>
+          <h2>Stats</h2>
+          <ul className={styles.stats}>
+            <li>HP: {pokemon.stats.hp}</li>
+            <li>Attack: {pokemon.stats.attack}</li>
+            <li>Defense: {pokemon.stats.defense}</li>
+            <li>Speed: {pokemon.stats.speed}</li>
+          </ul>
+        </div>
+        
+        <div className={styles.section}>
+          <h2>Moves</h2>
+          <ol className={styles.moves}>
+            {pokemon.moves.map((m) => (
+              <li key={m}>{m}</li>
+            ))}
+          </ol>
+        </div>
+      </motion.div>
     </div>
   )
 }

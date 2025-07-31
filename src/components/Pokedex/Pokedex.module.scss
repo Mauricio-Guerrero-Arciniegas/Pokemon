@@ -26,6 +26,22 @@
   text-shadow: 1px 1px 5px #000000;
 }
 
+// ANIMACIÓN FADE-IN
+.fade-in {
+  animation: fade-in 0.6s ease-in-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 header h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
