@@ -1,70 +1,41 @@
-# React + TypeScript + Vite
+# Pokédex Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web interactiva de Pokedex creada con **React**, **TypeScript**, **SASS (SCSS)** y animaciones usando **Framer Motion**. Consulta información detallada de cualquier Pokémon, con soporte para audio en español, efectos visuales avanzados y diseño responsive.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Búsqueda y visualización** de Pokémon por nombre.
+- **Filtro por tipos
+- **Estadísticas animadas** con barras de progreso.
+- **Traducción al español** de habilidades y movimientos.
+- **Lectura en voz alta** de la descripción del Pokémon.
+- **Animaciones suaves** con Framer Motion.
+- **Confetti** animado al ingresar nombre de usuario.
+- **Diseño moderno** con efecto glassmorphism.
+- Paleta de colores personalizada.
+- **100% responsive**.
 
-## Expanding the ESLint configuration
+## Tecnologías usadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [SCSS](https://sass-lang.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Tsparticles Confetti](https://github.com/tsparticles/confetti)
+- [PokéAPI](https://pokeapi.co/)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instalación local
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+```bash
+# 1. Clona el repositorio
+git clone https://github.com/tuusuario/pokedex-app.git
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# 2. Entra al directorio
+cd pokedex-app
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# 3. Instala dependencias
+npm install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-# Pokemon
+# 4. Ejecuta la app
+npm run dev
