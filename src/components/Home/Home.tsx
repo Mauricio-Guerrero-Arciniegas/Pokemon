@@ -70,7 +70,7 @@ function Home() {
 
       {name && (
         <h2 className={styles.greeting}>
-          Hola <span className={styles.username}>{name}</span>, estamos Redireccionando a tu{' '}
+          Hola <span className={styles.username}>{name}</span>, estás entrando a tu{' '}
           <Link to="/pokedex" className={styles.link}>Pokedex</Link>
         </h2>
       )}
