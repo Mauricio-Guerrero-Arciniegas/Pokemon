@@ -124,7 +124,7 @@ function Pokedex() {
         <div className={styles.pagination}>
           <span>{page} de {totalPages}</span>
           <div>
-            <button onClick={() => goToPage(page - 1)} disabled={page === 1}>prev</button>
+            <button onClick={() => goToPage(page - 1)} disabled={page === 1}>anterior</button>
             {range.map(n => (
               <button
                 key={n}
@@ -134,7 +134,7 @@ function Pokedex() {
                 {n}
               </button>
             ))}
-            <button onClick={() => goToPage(page + 1)} disabled={page === totalPages}>next</button>
+            <button onClick={() => goToPage(page + 1)} disabled={page === totalPages}>siguiente</button>
           </div>
         </div>
       </div>
