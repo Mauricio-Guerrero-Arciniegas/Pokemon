@@ -3,8 +3,19 @@ import Home from '../components/Home/Home'
 import Pokedex from '../components/Pokedex/Pokedex'
 import Details from '../components/Details/Details'
 import ProtectedRoute from './ProtectedRoute'
+import { useEffect, useState } from 'react'
+import Loader from '../components/LoaderM/LoaderM'
 
 function App () {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 3500)
+    return () => clearTimeout(timeout)
+  }, [])
+
+  if (loading) return <Loader />
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
