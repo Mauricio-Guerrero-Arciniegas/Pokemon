@@ -92,15 +92,9 @@ function Details() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
-        {/* Branding Header */}
-        <div className={styles.branding}>
-          <h1 className={styles.brandTitle}>Pokemon information</h1>
-          <span className={styles.brandTagline}>Discover your favorite Pokémon</span>
-        </div>
-
         <header className={styles.header}>
           <Link to='/pokedex' className={styles.back}>
-            ← Volver
+            Volver
           </Link>
         </header>
 
